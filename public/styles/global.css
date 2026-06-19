@@ -177,11 +177,13 @@ a { text-decoration: none; color: inherit; }
 .footer-bottom p { font-size: 0.8rem; }
 .vet-owned { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
-/* HERO PHOTO */
-.hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
-.hero-photo { width: 100%; max-width: 480px; height: 520px; object-fit: cover; object-position: center; border-radius: 12px; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
-.hero-photo-badge { position: absolute; bottom: -20px; left: -20px; background: var(--white); border-radius: 8px; padding: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.hero-photo-badge img { height: 52px; width: auto; display: block; }
+/* HERO COLLAGE */
+.hero-collage { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+.hero-logo-main { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-logo-main img { width: 280px; max-width: 100%; filter: drop-shadow(0 0 48px rgba(201,160,96,0.35)); }
+.hero-col-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; width: 100%; }
+.hero-col-photo { border-radius: 8px; overflow: hidden; aspect-ratio: 4/3; }
+.hero-col-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 /* SERVICE CARD WITH PHOTO */
 .service-card-img { width: 100%; height: 180px; overflow: hidden; border-radius: 6px 6px 0 0; margin: -36px -28px 20px; width: calc(100% + 56px); }
