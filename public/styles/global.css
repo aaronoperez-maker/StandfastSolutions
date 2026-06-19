@@ -141,8 +141,7 @@ a { text-decoration: none; color: inherit; }
 #about { padding: 96px 0; background: var(--light); }
 .about-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
 .about-img-wrap { position: relative; }
-.about-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--navy), #0d1733); border-radius: 8px; display: flex; align-items: center; justify-content: center; }
-.about-img-placeholder img { width: 200px; opacity: 0.5; filter: brightness(0) invert(1); }
+.about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: 8px; display: block; }
 .about-ribbon { position: absolute; bottom: -20px; right: -20px; background: var(--gold); color: var(--navy); border-radius: 8px; padding: 20px 24px; text-align: center; }
 .about-ribbon .rib-num { font-family: var(--font-heading); font-size: 2rem; line-height: 1; display: block; }
 .about-ribbon .rib-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; display: block; margin-top: 4px; }
