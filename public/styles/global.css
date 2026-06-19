@@ -1,4 +1,4 @@
-/* ===== STAND FAST SOLUTIONS — GLOBAL STYLES ===== */
+/* ===== STANFAST SOLUTIONS — GLOBAL STYLES ===== */
 
 :root {
   --navy:   #1C2B5E;
@@ -177,6 +177,54 @@ a { text-decoration: none; color: inherit; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
 .footer-bottom p { font-size: 0.8rem; }
 .vet-owned { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+
+/* PAGE HERO (inner pages) */
+.page-hero {
+  background: linear-gradient(135deg, var(--navy) 0%, #0d1733 100%);
+  padding: 140px 0 72px;
+  position: relative;
+}
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(201,160,96,0.05)" stroke-width="1"/></svg>') center/500px repeat;
+  pointer-events: none;
+}
+.page-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.page-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 600px;
+}
+
+/* FOOTER CREDENTIALS */
+.footer-creds { display: flex; flex-direction: column; gap: 12px; }
+.cred-badge { display: flex; align-items: flex-start; gap: 12px; }
+.cred-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+.cred-badge strong { display: block; font-family: var(--font-heading); font-size: 0.85rem; letter-spacing: 0.08em; color: var(--gold); }
+.cred-badge span { font-size: 0.78rem; color: rgba(255,255,255,0.5); }
+.cred-row { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+.cred-label { color: var(--gold); font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.08em; margin-right: 6px; }
+.cred-val { color: rgba(255,255,255,0.5); }
+
+/* NAV CAPABILITY STATEMENT LINK */
+.nav-cap {
+  font-family: var(--font-heading);
+  font-size: 0.75rem !important;
+  letter-spacing: 0.08em;
+  color: var(--gold) !important;
+  border: 1px solid rgba(201,160,96,0.4);
+  border-radius: 3px;
+  padding: 6px 12px !important;
+}
+.nav-cap:hover { background: rgba(201,160,96,0.1) !important; color: var(--gold) !important; }
 
 /* MOBILE */
 @media (max-width: 768px) {

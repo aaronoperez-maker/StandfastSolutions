@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const services = [
+  {
+    icon: '🏢',
+    title: 'Facilities & Janitorial Services',
+    desc: 'Office cleaning, restroom sanitation, common-area maintenance, floor care, and recurring janitorial service for commercial and government facilities. Scheduled to fit your operation — daily, weekly, or custom.'
+  },
+  {
+    icon: '🌿',
+    title: 'Grounds & Exterior Maintenance',
+    desc: 'Pressure washing, exterior cleaning, and grounds upkeep to maintain a professional, well-kept property.'
+  },
+  {
+    icon: '📦',
+    title: 'Logistics & Support Services',
+    desc: 'Coordination and support services that help keep facilities and operations running smoothly.'
+  },
+  {
+    icon: '➕',
+    title: 'Additional Services Available Upon Request',
+    desc: 'Our model is built to flex. If your site needs a service not listed here, ask us. We regularly add capabilities to meet client needs.'
+  }
+];
+
+const clients = [
+  'Commercial property managers and building owners',
+  'Federal, state, and local government agencies',
+  'Prime contractors seeking a dependable subcontractor and veteran-owned partner'
+];
+---
+<Layout
+  title="Services & Capabilities | Stanfast Solutions"
+  description="Stanfast Solutions delivers facility and support services for commercial and government clients in Las Vegas and Clark County. Janitorial, grounds, logistics, and more."
+>
+
+<!-- PAGE HEADER -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">What We Offer</span>
+    <h1 class="page-hero-title">Services &amp; Capabilities</h1>
+    <p class="page-hero-sub">Stanfast Solutions delivers facility and support services for commercial and government clients. We start with your needs and build the right solution, scaling our services as your requirements grow.</p>
+  </div>
+</section>
+
+<!-- SERVICES LIST -->
+<section style="padding:80px 0;background:var(--white);">
+  <div class="container">
+    <div class="services-grid">
+      {services.map(s => (
+        <div class="service-card">
+          <div class="service-icon">{s.icon}</div>
+          <h3 class="service-title">{s.title}</h3>
+          <p class="service-desc">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITY STATEMENT -->
+<section style="padding:80px 0;background:var(--navy);">
+  <div class="container" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;">
+    <div>
+      <span class="section-label">For Government Buyers</span>
+      <h2 class="section-title" style="color:var(--white);">Capability Statement</h2>
+      <p style="font-size:0.95rem;color:rgba(255,255,255,0.7);margin-bottom:28px;">Government buyers and prime contractors can download our capability statement for a quick overview of who we are, what we do, and how to work with us.</p>
+      <a href="/capability-statement.pdf" target="_blank" class="btn btn-primary">Download Capability Statement (PDF)</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div class="why-card"><div class="big-num">SDVOSB</div><p>Veteran-Owned Status</p></div>
+      <div class="why-card"><div class="big-num">Gov</div><p>Government Ready</p></div>
+      <div class="why-card" style="grid-column:span 2;"><div class="big-num" style="font-size:1.4rem;">Las Vegas &amp; Clark County</div><p>Primary Service Area</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section style="padding:80px 0;background:var(--light);">
+  <div class="container">
+    <div style="max-width:700px;margin:0 auto;text-align:center;">
+      <span class="section-label">Our Clients</span>
+      <h2 class="section-title">Who We Serve</h2>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:16px;margin-top:32px;">
+        {clients.map(c => (
+          <li style="display:flex;align-items:center;gap:16px;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:20px 24px;text-align:left;font-size:0.95rem;color:var(--dark);">
+            <span style="color:var(--gold);font-size:1.2rem;flex-shrink:0;">✓</span>
+            {c}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding:80px 0;background:var(--white);text-align:center;">
+  <div class="container">
+    <h2 class="section-title">Ready to get started?</h2>
+    <p class="section-subtitle" style="margin:0 auto 32px;">Tell us what your site needs. We'll put together a straightforward quote.</p>
+    <a href="/contact" class="btn btn-primary">Request a Quote</a>
+  </div>
+</section>
+
+</Layout>

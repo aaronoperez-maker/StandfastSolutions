@@ -1,9 +1,14 @@
 ---
 interface Props {
-  title: string;
+  title?: string;
   description?: string;
 }
-const { title, description = "Stand Fast Solutions — Veteran-Owned Janitorial & Custodial Services. Discipline, reliability, and pride in every clean." } = Astro.props;
+const {
+  title = "Stanfast Solutions | Facilities & Support Services in Las Vegas",
+  description = "Stanfast Solutions is a veteran-owned provider of facilities, janitorial, and support services for commercial and government clients in Las Vegas and Clark County."
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -12,7 +17,7 @@ const { title, description = "Stand Fast Solutions — Veteran-Owned Janitorial 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content={description} />
   <meta name="theme-color" content="#1C2B5E" />
-  <link rel="icon" href="/images/logo.jpg" type="image/png" />
+  <link rel="icon" href="/images/logo.jpg" type="image/jpeg" />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:image" content="https://standfast.solutions/images/logo.jpg" />
@@ -24,49 +29,101 @@ const { title, description = "Stand Fast Solutions — Veteran-Owned Janitorial 
   <link rel="stylesheet" href="/styles/global.css" />
 </head>
 <body>
-  <slot />
-  <script>
-    // Mobile nav
-    const hamburger = document.getElementById('hamburger');
-    const navLinks = document.getElementById('navLinks');
-    if (hamburger && navLinks) {
-      hamburger.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        const spans = hamburger.querySelectorAll('span');
-        const isOpen = navLinks.classList.contains('open');
-        spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
-        spans[1].style.opacity = isOpen ? '0' : '1';
-        spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
-      });
-      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
-    }
 
-    // Scroll-in animation
-    const style = document.createElement('style');
-    style.textContent = '.visible { opacity: 1 !important; transform: none !important; }';
-    document.head.appendChild(style);
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.service-card, .why-item, .why-card, .contact-detail').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(24px)';
-      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-      observer.observe(el);
+<!-- HEADER -->
+<header id="header">
+  <nav class="container nav-inner">
+    <a href="/" class="nav-logo">
+      <img src="/images/logo.jpg" alt="Stanfast Solutions" />
+      <div class="nav-logo-text">
+        <span class="brand-top">Stanfast</span>
+        <span class="brand-bottom">Solutions</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="/" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
+      <li><a href="/services" class={currentPath === '/services' ? 'active' : ''}>Services</a></li>
+      <li><a href="/contact" class={currentPath === '/contact' ? 'active' : ''}>Contact</a></li>
+      <li><a href="/capability-statement.pdf" class="nav-cap" target="_blank">Capability Statement</a></li>
+      <li class="nav-cta"><a href="/contact">Request a Quote</a></li>
+    </ul>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<slot />
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="/images/logo.jpg" alt="Stanfast Solutions" />
+        <p>Steadfast service. Dependable results.</p>
+        <p style="margin-top:12px;font-size:0.82rem;">Veteran-owned and operated. Serving Las Vegas and Clark County, Nevada.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/services">Services &amp; Capabilities</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/capability-statement.pdf" target="_blank">Download Capability Statement</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Credentials</h4>
+        <div class="footer-creds">
+          <div class="cred-badge">
+            <span class="cred-icon">🎖️</span>
+            <div>
+              <strong>SDVOSB</strong>
+              <span>Service-Disabled Veteran-Owned<br/>Small Business — Pending</span>
+            </div>
+          </div>
+          <div class="cred-row"><span class="cred-label">UEI:</span> <span class="cred-val">Pending</span></div>
+          <div class="cred-row"><span class="cred-label">CAGE Code:</span> <span class="cred-val">Pending</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Stanfast Solutions. All rights reserved.</p>
+      <span class="vet-owned">Majority owned and operated by a service-disabled veteran</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      const spans = hamburger.querySelectorAll('span');
+      const isOpen = navLinks.classList.contains('open');
+      (spans[0] as HTMLElement).style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+      (spans[1] as HTMLElement).style.opacity = isOpen ? '0' : '1';
+      (spans[2] as HTMLElement).style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
     });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
 
-    // Contact form
-    const form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', e => {
-        e.preventDefault();
-        const btn = form.querySelector('.form-submit') as HTMLButtonElement;
-        btn.textContent = 'Message Sent!';
-        btn.style.cssText = 'background:#2d6a2d;border-color:#2d6a2d;color:#fff';
-        btn.disabled = true;
-        setTimeout(() => { btn.textContent = 'Send Message'; btn.style.cssText = ''; btn.disabled = false; (form as HTMLFormElement).reset(); }, 4000);
-      });
-    }
-  </script>
+  const style = document.createElement('style');
+  style.textContent = '.visible { opacity: 1 !important; transform: none !important; }';
+  document.head.appendChild(style);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .why-item, .why-card, .contact-detail, .animate-in').forEach(el => {
+    (el as HTMLElement).style.opacity = '0';
+    (el as HTMLElement).style.transform = 'translateY(24px)';
+    (el as HTMLElement).style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>

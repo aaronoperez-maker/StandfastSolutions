@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Contact | Stanfast Solutions"
+  description="Get in touch with Stanfast Solutions. Request a quote for facility, janitorial, or support services in Las Vegas and Clark County."
+>
+
+<!-- PAGE HEADER -->
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">Reach Out</span>
+    <h1 class="page-hero-title">Get in Touch</h1>
+    <p class="page-hero-sub">Tell us about your facility and what you need. We respond quickly.</p>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section style="padding:80px 0;background:var(--white);">
+  <div class="container contact-inner">
+
+    <div class="contact-info">
+      <span class="section-label">Contact Info</span>
+      <h2 class="section-title" style="font-size:1.6rem;">Let's Talk About Your Needs</h2>
+      <p class="section-subtitle" style="margin-bottom:40px;">We work with commercial and government clients across Las Vegas and Clark County. Reach out and we'll build a plan around your schedule and budget.</p>
+
+      <div class="contact-detail animate-in">
+        <div class="c-icon">📧</div>
+        <div><span class="c-label">Email</span><span class="c-value">info@standfast.solutions</span></div>
+      </div>
+      <div class="contact-detail animate-in">
+        <div class="c-icon">📞</div>
+        <div><span class="c-label">Phone</span><span class="c-value">(placeholder)</span></div>
+      </div>
+      <div class="contact-detail animate-in">
+        <div class="c-icon">📍</div>
+        <div><span class="c-label">Service Area</span><span class="c-value">Las Vegas and Clark County, Nevada</span></div>
+      </div>
+      <div class="contact-detail animate-in">
+        <div class="c-icon">🏛️</div>
+        <div><span class="c-label">Contract Types</span><span class="c-value">Available for commercial and government contracts</span></div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label for="company">Company / Organization</label>
+            <input type="text" id="company" name="company" placeholder="Your company" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@company.com" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" name="phone" placeholder="(702) 000-0000" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service">
+            <option value="">Select a service...</option>
+            <option>Facilities &amp; Janitorial</option>
+            <option>Grounds &amp; Exterior</option>
+            <option>Logistics &amp; Support</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Tell us about your facility and what you need..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary form-submit">Send Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+      btn.textContent = 'Request Sent!';
+      btn.style.cssText = 'background:#2d6a2d;border-color:#2d6a2d;color:#fff';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.textContent = 'Send Request';
+        btn.style.cssText = '';
+        btn.disabled = false;
+        (form as HTMLFormElement).reset();
+      }, 4000);
+    });
+  }
+</script>
+
+</Layout>
