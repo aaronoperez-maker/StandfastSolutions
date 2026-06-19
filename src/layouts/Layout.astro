@@ -1,0 +1,72 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = "Stand Fast Solutions — Veteran-Owned Janitorial & Custodial Services. Discipline, reliability, and pride in every clean." } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#1C2B5E" />
+  <link rel="icon" href="/images/logo.png" type="image/png" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="https://standfast.solutions/images/logo.png" />
+  <meta property="og:url" content="https://standfast.solutions" />
+  <title>{title}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/global.css" />
+</head>
+<body>
+  <slot />
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    if (hamburger && navLinks) {
+      hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        const spans = hamburger.querySelectorAll('span');
+        const isOpen = navLinks.classList.contains('open');
+        spans[0].style.transform = isOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+        spans[1].style.opacity = isOpen ? '0' : '1';
+        spans[2].style.transform = isOpen ? 'rotate(-45deg) translate(5px, -5px)' : '';
+      });
+      navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+    }
+
+    // Scroll-in animation
+    const style = document.createElement('style');
+    style.textContent = '.visible { opacity: 1 !important; transform: none !important; }';
+    document.head.appendChild(style);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.service-card, .why-item, .why-card, .contact-detail').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(24px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      observer.observe(el);
+    });
+
+    // Contact form
+    const form = document.getElementById('contactForm');
+    if (form) {
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit') as HTMLButtonElement;
+        btn.textContent = 'Message Sent!';
+        btn.style.cssText = 'background:#2d6a2d;border-color:#2d6a2d;color:#fff';
+        btn.disabled = true;
+        setTimeout(() => { btn.textContent = 'Send Message'; btn.style.cssText = ''; btn.disabled = false; (form as HTMLFormElement).reset(); }, 4000);
+      });
+    }
+  </script>
+</body>
+</html>
