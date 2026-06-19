@@ -177,6 +177,24 @@ a { text-decoration: none; color: inherit; }
 .footer-bottom p { font-size: 0.8rem; }
 .vet-owned { font-family: var(--font-heading); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
+/* HERO PHOTO */
+.hero-photo-wrap { position: relative; display: flex; justify-content: center; align-items: center; }
+.hero-photo { width: 100%; max-width: 480px; height: 520px; object-fit: cover; object-position: center; border-radius: 12px; display: block; box-shadow: 0 24px 64px rgba(0,0,0,0.4); }
+.hero-photo-badge { position: absolute; bottom: -20px; left: -20px; background: var(--white); border-radius: 8px; padding: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+.hero-photo-badge img { height: 52px; width: auto; display: block; }
+
+/* SERVICE CARD WITH PHOTO */
+.service-card-img { width: 100%; height: 180px; overflow: hidden; border-radius: 6px 6px 0 0; margin: -36px -28px 20px; width: calc(100% + 56px); }
+.service-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; }
+.service-card:hover .service-card-img img { transform: scale(1.05); }
+.service-card-body { padding: 0; }
+
+/* PHOTO GALLERY */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.gallery-item { overflow: hidden; border-radius: 8px; aspect-ratio: 4/3; }
+.gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+.gallery-item:hover img { transform: scale(1.05); }
+
 /* PAGE HERO (inner pages) */
 .page-hero {
   background: linear-gradient(135deg, var(--navy) 0%, #0d1733 100%);
@@ -240,6 +258,9 @@ a { text-decoration: none; color: inherit; }
   .hero-stats { justify-content: center; }
   .hero-text { margin: 0 auto 36px; }
   .why-inner, .about-inner, .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .hero-photo-badge { left: 8px; bottom: -16px; }
+  .hero-photo { height: 340px; }
   .why-visual { grid-template-columns: 1fr 1fr; }
   .footer-inner { grid-template-columns: 1fr; gap: 32px; }
   .footer-bottom { flex-direction: column; text-align: center; }
@@ -249,4 +270,6 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 480px) {
   .services-grid { grid-template-columns: 1fr; }
   .why-visual { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .hero-photo { height: 280px; }
 }

@@ -3,25 +3,34 @@ import Layout from '../layouts/Layout.astro';
 
 const services = [
   {
-    icon: '🏢',
+    photo: '/images/8.png',
     title: 'Facilities & Janitorial Services',
     desc: 'Routine and detailed cleaning for offices, restrooms, common areas, and commercial buildings. Reliable crews, consistent standards.'
   },
   {
-    icon: '🌿',
+    photo: '/images/6.png',
     title: 'Grounds & Exterior Maintenance',
     desc: 'Exterior upkeep including pressure washing, grounds care, and property maintenance that keeps your facility looking its best.'
   },
   {
-    icon: '📦',
-    title: 'Logistics & Support Services',
-    desc: 'Flexible support services and coordination to keep your operations moving.'
+    photo: '/images/10.png',
+    title: 'Industrial & Specialized Cleaning',
+    desc: 'High-standard cleaning for industrial facilities, warehouses, and environments requiring protective protocols and certified crews.'
   },
   {
-    icon: '➕',
+    photo: '/images/5.png',
     title: 'Additional Services Available',
     desc: "Don't see what you need? We tailor service solutions to fit. Reach out and ask."
   }
+];
+
+const gallery = [
+  { src: '/images/1.png', alt: 'Commercial facility cleaning' },
+  { src: '/images/2.png', alt: 'School hallway janitorial service' },
+  { src: '/images/3.png', alt: 'Office floor cleaning' },
+  { src: '/images/4.png', alt: 'Commercial floor mopping' },
+  { src: '/images/7.png', alt: 'Professional cleaning team' },
+  { src: '/images/9.png', alt: 'Detail cleaning service' },
 ];
 ---
 <Layout title="Standfast Solutions | Facilities & Support Services in Las Vegas">
@@ -61,9 +70,11 @@ const services = [
       </div>
     </div>
     <div class="hero-visual">
-      <div class="hero-logo-wrap">
-        <div class="hero-glow"></div>
-        <img src="/images/logo.jpg" alt="Standfast Solutions" />
+      <div class="hero-photo-wrap">
+        <img src="/images/7.png" alt="Standfast Solutions professional cleaning team" class="hero-photo" />
+        <div class="hero-photo-badge">
+          <img src="/images/logo.jpg" alt="Standfast Solutions" />
+        </div>
       </div>
     </div>
   </div>
@@ -111,9 +122,13 @@ const services = [
     <div class="services-grid">
       {services.map(s => (
         <div class="service-card">
-          <div class="service-icon">{s.icon}</div>
-          <h3 class="service-title">{s.title}</h3>
-          <p class="service-desc">{s.desc}</p>
+          <div class="service-card-img">
+            <img src={s.photo} alt={s.title} />
+          </div>
+          <div class="service-card-body">
+            <h3 class="service-title">{s.title}</h3>
+            <p class="service-desc">{s.desc}</p>
+          </div>
         </div>
       ))}
     </div>
@@ -123,7 +138,24 @@ const services = [
   </div>
 </section>
 
-<!-- WHY Standfast -->
+<!-- PHOTO GALLERY -->
+<section style="padding:80px 0;background:var(--white);">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <span class="section-label">Our Work</span>
+      <h2 class="section-title">Professionals in Action</h2>
+    </div>
+    <div class="gallery-grid">
+      {gallery.map(g => (
+        <div class="gallery-item">
+          <img src={g.src} alt={g.alt} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WHY STANDFAST -->
 <section id="why" style="padding:96px 0;background:var(--navy);color:var(--white);">
   <div class="container why-inner">
     <div class="why-content">
